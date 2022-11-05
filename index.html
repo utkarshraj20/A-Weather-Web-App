@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <img src="pic.jpg" style="width: 100%; opacity: 0.7 ; z-index: -1; position: absolute" />
+    <div class="wrapper">
+      <header><i class='bx bx-left-arrow-alt'></i>Weather App</header>
+      <section class="input-part">
+        <p id="time" style="font-weight: bold; font-size: 40px; text-align: center"></p>
+        <p id="date" style="font-weight: bold; text-align: center"></p>
+        <p class="info-txt"></p>
+        <div class="content">
+          <input type="text" spellcheck="false" placeholder="Enter city name" required style="border-width: 5px">
+        </div>
+      </section>
+      <section class="weather-part">
+        <img src="" alt="Weather Icon">
+        <div class="temp">
+          <span class="numb">_</span>
+          <span class="deg">°</span>C
+        </div>
+        <div class="weather">_ _</div>
+        <div class="location">
+          <i class='bx bx-map'></i>
+          <span>_, _</span>
+        </div>
+        <div class="bottom-details">
+          <div class="column feels">
+            <i class='bx bxs-thermometer'></i>
+            <div class="details">
+              <div class="temp">
+                <span class="numb-2">_</span>
+                <span class="deg">°</span>C
+              </div>
+              <p>Feels like</p>
+            </div>
+          </div>
+          <div class="column humidity">
+            <i class='bx bxs-droplet-half'></i>
+            <div class="details">
+              <span>_</span>
+              <p>Humidity</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const curDate = document.getElementById("date");
+       const getCurrentDay = () =>{
+           var weekday = new Array(7);
+           weekday[0]="Sun";
+           weekday[1]="Mon";
+           weekday[2]="Tue";
+           weekday[3]="Wed";
+           weekday[4]="Thur";
+           weekday[5]="Fri";
+           weekday[6]="Sat";
+           let currentTime = new Date();
+           let day = weekday[currentTime.getDay()];
+           return day;
+       };
+       const getCurrentDate = () =>{
+           var months1 = [
+               "Jan",
+               "Feb",
+               "Mar",
+               "Apr",
+               "May",
+               "June",
+               "July",
+               "Aug",
+               "Sept",
+               "Oct",
+               "Nov",
+               "Dec",
+           ];
+           var now1 = new Date();
+           var month1 = months1[now1.getMonth()];
+           var date1 = now1.getDate();
+           let hours1 = now1.getHours();
+           let mins1 = now1.getMinutes();
+           let periods1 = "AM";
+           if(hours1>11)
+           {
+               periods1 = "PM";
+               if(hours1>12) hours1-=12;
+           }
+           if(mins1<10)
+           {
+               mins1 = "0" + mins1;
+           }
+      
+           return `${month1} ${date1}`;   
+       }; 
+       curDate.innerHTML=getCurrentDay() + " | "+ getCurrentDate();
+    </script>
+    <script>
+      const curTime = document.getElementById("time");
+      const getCurrentTime = () =>{
+           var months = [
+               "Jan",
+               "Feb",
+               "Mar",
+               "Apr",
+               "May",
+               "June",
+               "July",
+               "Aug",
+               "Sept",
+               "Oct",
+               "Nov",
+               "Dec",
+           ];
+           var now = new Date();
+           var month = months[now.getMonth()];
+           var date = now.getDate();
+           let hours = now.getHours();
+           let mins = now.getMinutes();
+           let periods = "AM";
+           if(hours>11)
+           {
+               periods = "PM";
+               if(hours>12) hours-=12;
+           }
+           if(mins<10)
+           {
+               mins = "0" + mins;
+           }
+           return `${hours}:${mins}${periods}`;   
+       }; 
+       curTime.innerHTML=getCurrentTime();
+    </script>
+    <script src="script.js">
+    </script>  
+  </body>
+</html>
