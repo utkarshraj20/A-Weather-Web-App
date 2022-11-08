@@ -16,7 +16,7 @@ inputField.addEventListener("keyup", e =>{
 });
 
 function requestApi(city){
-    api = 'http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b7b9c9b361ab2b10dd3e0c60eb69373b' ;
+    api = 'api.openweathermap.org/data/2.5/weather?q=${city}&appid=b7b9c9b361ab2b10dd3e0c60eb69373b' ;
     fetchData();
 }
 
@@ -24,7 +24,7 @@ function fetchData(){
     infoTxt.innerText = "Getting weather details...";
     infoTxt.classList.add("pending");
     fetch(api).then(res => res.json()).then(result => weatherDetails(result)).catch(() =>{
-        infoTxt.innerText = "Something went";
+        infoTxt.innerText = "Something went wrong";
         infoTxt.classList.replace("pending", "error");
     });
 }
